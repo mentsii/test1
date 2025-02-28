@@ -1,0 +1,190 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f8f8; /* Легкий фон */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px; /* Для отступа под шапку */
+}
+
+/* Шапка */
+ul.header {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px 0;
+    background-color: #222; /* Темный фон для шапки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    border-radius: 0 0 20px 20px; /* Закругленные нижние углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Ссылки в шапке должны быть белыми */
+ul.header li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+ul.header li a:hover {
+    background-color: #555; /* Более темный оттенок при наведении */
+}
+
+/* Кнопка "Social" */
+.social-bar-btn {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* Кнопка слева в шапке */
+    background-color: #222; /* Тёмный цвет кнопки */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: background-color 0.3s ease;
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    font-size: 16px; /* Уменьшаем размер текста */
+    font-weight: bold; /* Сделаем текст жирным */
+}
+
+.social-bar-btn:hover {
+    background-color: #444; /* При наведении */
+}
+
+/* Социальная панель */
+.social-bar {
+    width: 220px;
+    background-color: #444;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: -300px; /* Панель скрыта сверху */
+    left: 0;
+    padding: 20px;
+    height: 300px; /* Увеличена высота панели */
+    transition: top 0.3s ease; /* Плавное появление */
+    z-index: 500;
+    justify-content: flex-start;
+    gap: 15px; /* Расстояние между ссылками */
+}
+
+.social-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #555;
+    transition: background-color 0.3s ease;
+}
+
+.social-bar a:hover {
+    background-color: #666; /* При наведении */
+}
+
+/* Когда панель активна, она выезжает вниз */
+.social-bar.active {
+    top: 0; /* Панель появляется */
+}
+
+/* Основной контент */
+main {
+    margin-left: 240px;
+    padding: 80px 20px 20px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Сетка товаров с тремя карточками в строке */
+ul.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    list-style: none;
+    flex: 1;
+    justify-items: center;
+}
+
+/* Карточка товара */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    height: 400px;
+    max-width: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Детали товара */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Цена товара */
+.price {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e63946;
+}
+
+/* Описание товара */
+.description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Ссылка на детали */
+.details-link {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.details-link:hover {
+    background-color: #0056b3;
+}
+
