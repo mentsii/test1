@@ -47,4 +47,6 @@ def categories(request): #HttpRequest
 
 
 def page_not_found(request, exception): #HttpRequest
-    return HttpResponseNotFound(f"<h1>УПС..</h1><p>Что то пошло не так :\</p>")
+    return HttpResponseNotFound(f"<h1>УПС..</h1><p>Что то пошло не так, ошибочка :\</p>")
+
+
