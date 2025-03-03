@@ -4,8 +4,8 @@
 
 <div class="product-page">
     <div class="product-details">
-        <h2>{{ info.name|title }} - {{ info.price }} ₽</h2>
-        <p class="description">{{ info.description }}</p>
+        <h2>{{ info.title }} - {{ info.price }} ₽</h2>
+        <p class="description">{{ info.content }}</p>
         <p class="price">{{ info.price }} ₽</p>
         <a href="{% url 'home' %}" class="back-link">На главную</a>
     </div>

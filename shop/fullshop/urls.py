@@ -8,7 +8,8 @@ register_converter(converters.TwoConverorNumbers, 'numbers2')
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('categories/', views.categories, name="categories"), 
+    path('categories/', views.categories, name="categories"),
+    path('categories/<slug:cate_slug>/', views.show_categories, name="category"), 
     path('about/', views.about, name="about"),
     path('product/<int:product_id>/', views.product, name="product"),
     path('login/', views.login, name="login")

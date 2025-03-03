@@ -1,11 +1,9 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 from . import product_info
-
-dt = product_info.dt
-
+from .models import Product, Category
 
 data_m = [
     {"title": "О сайте", "url_name": "about"},
@@ -19,22 +17,22 @@ def index(request):
     data = {
         "title": "Главная страница", 
         "menu": data_m,
-        "info": dt
+        "info": Product.active_products.all()
     }
     return render(request, "fullshop/index.html", context=data)
 
 def product(request, product_id):
+    
+    product = get_object_or_404(Product, active=1, pk=product_id) 
 
-    product = {}
-    for products in dt:
-        if products["id"] == product_id:
-            product["info"] = products
-            product["menu"] = data_m
-            break
+    prod = { 
+        "title": product.title, 
+        "menu": data_m,
+        "info": product
+    }
+    
+    return render(request, "fullshop/product.html", prod)
 
-    if not product:
-        raise Http404()
-    return render(request, "fullshop/product.html", product)
 
 def login(request):
     return HttpResponse(f"<h1>Страница входа</h1>")
@@ -42,9 +40,29 @@ def login(request):
 def about(request):
     return render(request, "fullshop/about.html", {'title': "О сайте", "menu": data_m})
 
-def categories(request): #HttpRequest
-    return HttpResponse(f"<h1>Страница приложения c категориями</h1>")
+def show_categories(request, cate_slug): #HttpRequest
+    category = get_object_or_404(Category, slug=cate_slug)
+    product_from_catrgory = Product.objects.filter(cate_id=category.pk)
 
+    category_info = { 
+        "title": category.title, 
+        "menu": data_m,
+        "info": product_from_catrgory
+    }
+    
+    return render(request, "fullshop/category.html", category_info)
+
+def categories(request): #HttpRequest
+    all_categories = Category.objects.all()
+    
+
+    category_info = { 
+        "title": "Категории", 
+        "menu": data_m,
+        "info": all_categories
+    }
+    
+    return render(request, "fullshop/index.html", category_info)
 
 def page_not_found(request, exception): #HttpRequest
     return HttpResponseNotFound(f"<h1>УПС..</h1><p>Что то пошло не так, ошибочка :\</p>")
