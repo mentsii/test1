@@ -2,129 +2,135 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f8f8; /* Легкий фон */
+    background-color: #f8f8f8;
     color: #333;
     display: flex;
     flex-direction: column;
-    padding-top: 50px; /* Для отступа под шапку */
+    padding-top: 40px; /* Отступ для шапки */
 }
 
-/* Шапка */
 ul.header {
     list-style-type: none;
     margin: 0;
     padding: 20px 0;
-    background-color: #222; /* Темный фон для шапки */
+    background-color: #fff; /* Белый фон */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
     width: 100%;
-    border-radius: 0 0 20px 20px; /* Закругленные нижние углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: white;
+    border-radius: 0 0 20px 20px; /* Скругление углов снизу */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    color: #333;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
+    font-family: 'Poppins', sans-serif; /* Современный шрифт */
+    height: 45px; /* Фиксированная высота */
 }
 
-/* Ссылки в шапке должны быть белыми */
-ul.header li a {
-    text-decoration: none;
-    color: white;
-    padding: 15px 20px;
-    font-size: 18px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+/* Каталог (гамбургер) */
+ul.header .catalog {
+    margin-left: 50px; /* Отступ слева */
+    position: relative;
 }
 
-ul.header li a:hover {
-    background-color: #555; /* Более темный оттенок при наведении */
+/* Гамбургер-иконка */
+.hamburger-icon {
+    width: 64px; /* Размер изображения */
+    height: 64px;
+    display: block;
+    margin-left: 0; /* Сдвиг при необходимости */
+    transition: transform 0.3s ease; /* Эффект наведения */
 }
 
-/* Кнопка "Social" */
-.social-bar-btn {
-    position: absolute;
-    top: 50%;
-    left: 20px; /* Кнопка слева в шапке */
-    background-color: #222; /* Тёмный цвет кнопки */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-    transition: background-color 0.3s ease;
-    transform: translateY(-50%); /* Центрируем по вертикали */
-    font-size: 16px; /* Уменьшаем размер текста */
-    font-weight: bold; /* Сделаем текст жирным */
+.hamburger-icon:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
 }
 
-.social-bar-btn:hover {
-    background-color: #444; /* При наведении */
-}
-
-/* Социальная панель */
-.social-bar {
-    width: 220px;
-    background-color: #444;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: -300px; /* Панель скрыта сверху */
-    left: 0;
-    padding: 20px;
-    height: 300px; /* Увеличена высота панели */
-    transition: top 0.3s ease; /* Плавное появление */
-    z-index: 500;
-    justify-content: flex-start;
-    gap: 15px; /* Расстояние между ссылками */
-}
-
-.social-bar a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    width: 100%;
+/* Название сайта */
+ul.header .site-title {
+    position: absolute; /* Фиксируем позицию заголовка */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвиг для точного центрирования */
     text-align: center;
-    border-radius: 5px;
-    background-color: #555;
-    transition: background-color 0.3s ease;
 }
 
-.social-bar a:hover {
-    background-color: #666; /* При наведении */
-}
-
-/* Когда панель активна, она выезжает вниз */
-.social-bar.active {
-    top: 0; /* Панель появляется */
+/* Название сайта */
+ul.header .site-title a {
+    font-size: 32px; /* Уменьшенный размер шрифта */
+    font-weight: 700; /* Жирный текст */
+    color: #1a1a1a; /* Темный цвет текста */
+    font-family: 'Cinzel', serif; /* Пафосный шрифт с засечками */
+    text-transform: uppercase; /* Заглавные буквы */
+    letter-spacing: 1.5px; /* Немного меньше расстояние между буквами */
+    text-decoration: none; /* Убираем подчеркивание */
 }
 
 /* Основной контент */
 main {
-    margin-left: 240px;
-    padding: 80px 20px 20px;
+    margin: 0 auto; /* Центрирование по горизонтали */
+    padding: 100px 20px 20px; /* Уменьшенный верхний отступ */
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    align-items: flex-start; /* Выравнивание сверху */
+    flex-direction: column; /* Вертикальное направление */
+    text-align: center;
 }
 
-/* Сетка товаров с тремя карточками в строке */
+/* Войти */
+ul.header .login {
+    margin-right: 50px; /* Отступ справа */
+    font-size: 26px; /* Уменьшенный размер шрифта */
+}
+
+ul.header li a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #000; /* Черный текст */
+    font-size: 20px; /* Увеличенный шрифт */
+    font-weight: bold; /* Жирный текст */
+    transition: color 0.3s ease;
+}
+
+
+
+ul.header .site-title a:hover {
+    color: #000; /* Остается черным при наведении */
+}
+
+/* Гамбургер-иконка */
+.hamburger-icon {
+    width: 34px; /* Ширина изображения */
+    height: 34px; /* Высота изображения */
+    display: block; /* Блок для правильного выравнивания */
+    transition: transform 0.3s ease; /* Анимация при наведении */
+}
+
+.hamburger-icon:hover {
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+main {
+    margin: 0 auto; /* Центрирование по горизонтали */
+    padding: 70px 20px 20px; /* Уменьшенный верхний отступ */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Выравнивание сверху */
+    flex-direction: column; /* Вертикальное направление */
+    text-align: center;
+}
+
 ul.products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr); /* 4 карточки в ряду */
+    gap: 30px; /* Расстояние между карточками */
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 40px auto; /* Отступ сверху и центрирование */
+    padding: 0;
     list-style: none;
-    flex: 1;
-    justify-items: center;
+    justify-items: center; /* Центрирование карточек */
 }
 
 /* Карточка товара */
@@ -132,48 +138,51 @@ ul.products {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 20px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
-    height: 400px;
-    max-width: 350px;
-    margin: 0 auto;
+    width: 300px; /* Фиксированная ширина */
+    height: 400px; /* Фиксированная высота */
+    padding: 20px;
     overflow: hidden;
+    box-sizing: border-box; /* Учитываем отступы */
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+/* Заголовок */
+.product-card h2 {
+    font-size: 18px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%; /* Ограничиваем ширину */
 }
 
-/* Детали товара */
-.product-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+/* Описание товара */
+.product-card .description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 40px; /* Ограничение высоты описания */
+    max-width: 100%; /* Ограничиваем ширину */
 }
 
-/* Цена товара */
-.price {
+/* Цена */
+.product-card .price {
     margin: 10px 0;
     font-size: 18px;
     font-weight: bold;
     color: #e63946;
 }
 
-/* Описание товара */
-.description {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-/* Ссылка на детали */
+/* Ссылка "Подробнее" */
 .details-link {
     text-decoration: none;
     color: white;
@@ -188,3 +197,62 @@ ul.products {
     background-color: #0056b3;
 }
 
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Стили для категорий ===== */
+.categories-container {
+    max-width: 300px; /* Ширина контейнера */
+    margin: 20px auto 20px 20px; /* Отступ сверху, слева, снизу, а справа авто */
+    padding: 20px;
+    background-color: #fff; /* Фон для выделения */
+    border: 1px solid #ddd; /* Легкая рамка */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+    text-align: left; /* Выравнивание текста */
+}
+
+
+
+.categories-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.category-item {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-item:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+
+.category-link:hover {
+    color: #0056b3;
+}

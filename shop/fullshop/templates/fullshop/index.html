@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<h2>{{ title }}</h2>
 <ul class="products">
     {% for product in info %}
     <li class="product-card">
         <div class="product-details">
+            <!-- Заголовок товара -->
             <h2>{{ product.title|title }}</h2>
-            <p class="description">{{ product.content}}</p>
+            
+            <!-- Описание товара -->
+            <p class="description">{{ product.content }}</p>
+            
+            <!-- Цена товара -->
             <p class="price">{{ product.price }} ₽</p>
-            <!-- <a href="{% url 'product' product.id %}" class="details-link">Подробнее</a> -->
+            
+            <!-- Ссылка "Подробнее" -->
             <a href="{{ product.get_absolute_url }}" class="details-link">Подробнее</a>
         </div>
     </li>

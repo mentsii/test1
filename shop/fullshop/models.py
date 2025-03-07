@@ -19,6 +19,7 @@ class Product(models.Model):
     price = models.IntegerField(default=2000)
     count = models.IntegerField(default=10)
     cate = models.ForeignKey('Category', on_delete=models.PROTECT, related_name="products")
+    tags = models.ManyToManyField('Tags', blank=True, related_name="tags")
 
     active_products = ActiveProductsManager()
     objects = models.Manager()
@@ -38,11 +39,20 @@ class Product(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
-    slug = models.CharField(max_length=255, unique=True, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
     def get_absolute_url(self):
         return reverse("category", kwargs={"cate_slug": self.slug})
 
     def __str__(self):
         return self.title
+
+class Tags(models.Model):
+    tag = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.tag
     
+    def get_absolute_url(self):
+        return reverse("special_tag", kwargs={"tag_slug": self.slug})

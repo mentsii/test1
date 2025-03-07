@@ -1,4 +1,5 @@
 {% load static %}
+{% load fullshop_tags %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -7,37 +8,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>{{ title }}</title>
     <link href="{% static 'fullshop/css/styles.css' %}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <!-- Боковая панель соцсетей -->
-    {% include "fullshop/includes/nav.html" %}
 
     <!-- Основная часть сайта -->
     <div class="main-content">
         <!-- Шапка -->
         <ul class="header">
-            <li>
-                <a href="{% url 'home' %}">Главная страница</a>
+            <!-- Каталог (левый край) -->
+            <li class="catalog">
+                <a href="{% url 'categories' %}">
+                    <img src="{% static 'fullshop/images/hamburger.png' %}" alt="Меню" class="hamburger-icon">
+                </a>
             </li>
-            {% for page in menu %}
-            <li>
-                <a href="{% url page.url_name %}">{{ page.title }}</a>
+            <!-- Название сайта (центр) -->
+            <li class="site-title">
+                <a href="{% url 'home' %}">Mentsi</a>
             </li>
-            {% endfor %}
+            <!-- Войти (правый край) -->
+            <li class="login">
+                <a href="{% url 'login' %}">Войти</a>
+            </li>
         </ul>
-
-        <!-- Кнопка для открытия боковой панели -->
-        <div class="social-bar-btn" id="toggle-btn">
-            Social
-        </div>
 
         <!-- Контент -->
         <main>
+            <li>
+                {% show_tags %}
+            </li>
             {% block content %} {% endblock %}
         </main>
     </div>
 
-    <script src="{% static 'fullshop/js/script.js' %}"></script>
 </body>
 </html>
 

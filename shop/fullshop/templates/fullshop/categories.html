@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="categories-container">
+    <h2 class="categories-title">{{ title }}</h2>
+    <ul class="categories-list">
+        {% for cate in info %}
+        <li class="category-item">
+            <a href="{{ cate.get_absolute_url }}" class="category-link">{{ cate.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
